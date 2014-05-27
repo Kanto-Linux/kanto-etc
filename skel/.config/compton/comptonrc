@@ -1,0 +1,9 @@
+# compton start-up command used by CrunchBang's compositing pipemenu.
+# See 'man compton' for details about how to modify these settings.
+
+## Basic
+EXECXCOMP='compton -cC -o 0.50 -G -b'
+
+## Less basic - tip: uncomment below and comment out above, then restart
+#EXECXCOMP='compton -cC -fF -o 0.50 -I 0.095 -O 0.095 -D 6 -m 0.86 -G -b'
+
