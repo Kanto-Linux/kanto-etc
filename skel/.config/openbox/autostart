@@ -1,6 +1,6 @@
 ## Openbox autostart.sh
 ## ====================
-## When you login to your CrunchBang Openbox session, this autostart script 
+## When you login to your Kanto openbox session, this autostart script 
 ## will be executed to set-up your environment and launch any applications
 ## you want to run at startup.
 ##
@@ -11,31 +11,23 @@
 ## More information about this can be found at:
 ## http://openbox.org/wiki/Help:Autostart
 ##
-## If you do something cool with your autostart script and you think others
-## could benefit from your hack, please consider sharing it at:
-## http://crunchbanglinux.org/forums/
-##
-## Have fun! :)
 
 ## Set root window colour
 hsetroot -solid "#2E3436" &
 
 ## Group start:
-## 1. nitrogen - restores wallpaper
-## 2. compositor
-## 3. sleep - give compositor time to start
-## 4. conky
+## 1. feh -- set wallpaper
+## 2. compositor -- so everything looks pretty
+## 3. sleep -- give compositor time to start
+## 4. conky -- because we like it
 ## 5. tint2 panel
 (\
-nitrogen --restore && \
-cb-compositor --start && \
+feh --bg-scale /path/to/wallpaper && \
+compton --start && \
 sleep 2s && \
 conky -q && \
 tint2 \
 ) &
-
-## Enable hot corners
-cb-hotcorners --daemon &
 
 ## Volume control for systray
 (sleep 2s && pnmixer) &
@@ -64,17 +56,6 @@ xscreensaver -no-splash &
 ## Set keyboard settings - 250 ms delay and 25 cps (characters per second) repeat rate.
 ## Adjust the values according to your preferances.
 xset r rate 250 25 &
-
-## The following command runs hacks and fixes for #! LiveCD sessions.
-## Safe to delete after installation.
-cb-cowpowers &
-
-## cb-welcome - post-installation script, will not run in a live session and
-## only runs once. Safe to remove.
-(sleep 10s && cb-welcome --firstrun) &
-
-## cb-fortune - have Waldorf say a little adage
-#(sleep 120s && cb-fortune) &
 
 ## GNOME PolicyKit and Keyring
 (\
